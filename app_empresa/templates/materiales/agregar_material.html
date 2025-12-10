@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Agregar Material</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre_material" class="form-label">Nombre</label>
+        {{ form.nombre_material }}
+    </div>
+    <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripcion</label>
+        {{ form.descripcion }}
+    </div>
+    <div class="mb-3">
+        <label for="stock_actual" class="form-label">Stock</label>
+        {{ form.stock_actual }}
+    </div>
+    <div class="mb-3">
+        <label for="fecha_caducidad" class="form-label">Fecha de Caducidad</label>
+        {{ form.fecha_caducidad }}
+    </div>
+    <div class="mb-3">
+        <label for="id_proveedor" class="form-label">ID de Proveedor</label>
+        {{ form.id_proveedor }}
+    </div>
+    <div class="mb-3">
+        <label for="costo_unitario" class="form-label">Costo Unitario</label>
+        {{ form.costo_unitario }}
+    </div>
+    <div class="mb-3">
+        <label for="tipo_material" class="form-label">Tipo de Material</label>
+        {{ form.tipo_material }}
+    </div>
+    <div class="mb-3">
+        <label for="ubicacion_almacen" class="form-label">Ubicacion en Almacen</label>
+        {{ form.ubicacion_almacen }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

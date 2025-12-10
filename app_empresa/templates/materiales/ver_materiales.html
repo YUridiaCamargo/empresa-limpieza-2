@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Materiales</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Stock Actual</th>
+                <th>Fecha de Caducidad</th>
+                <th>Proveedor ID</th>
+                <th>Costo Unitario</th>
+                <th>Tipo</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materiales %}
+            <tr>
+                <td>{{ material.id }}</td>
+                <td>{{ material.nombre_material|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.descripcion|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.stock_actual|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.fecha_caducidad|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.id_proveedor|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.costo_unitario|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.tipo_material|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ material.ubicacion_almacen|default_if_none:"(Sin datos)" }}</td>
+                <td>
+                    <a href="{% url 'editar_material' material.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_material' material.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{% url 'agregar_material' %}" class="btn btn-primary">Agregar Material</a>
+{% endblock %}

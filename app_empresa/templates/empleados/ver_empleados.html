@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Empleados</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Fecha de Contratación</th>
+                <th>Salario por Hora</th>
+                <th>Turno</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Certificaciones</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado.id }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellido }}</td>
+                <td>{{ empleado.dni }}</td>
+                <td>{{ empleado.fecha_contratacion }}</td>
+                <td>{{ empleado.salario_hora }}</td>
+                <td>{{ empleado.turno }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td>{{ empleado.email }}</td>
+                <td>{{ empleado.certificaciones_seguridad }}</td>
+                <td>
+                    <a href="{% url 'editar_empleado' empleado.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_empleado' empleado.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{% url 'agregar_empleado' %}" class="btn btn-primary">Agregar Empleado</a>
+{% endblock %}

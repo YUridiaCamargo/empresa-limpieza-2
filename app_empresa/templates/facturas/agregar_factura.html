@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Agregar Factura</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_cliente" class="form-label">Cliente</label>
+        {{ form.id_cliente }}
+    </div>
+    <div class="mb-3">
+        <label for="fecha_emision" class="form-label">Fecha de Emision</label>
+        {{ form.fecha_emision }}
+    </div>
+    <div class="mb-3">
+        <label for="monto_total" class="form-label">Monto Total</label>
+        {{ form.monto_total }}
+    </div>
+    <div class="mb-3">
+        <label for="estado_pago" class="form-label">Estado de Pago</label>
+        {{ form.estado_pago }}
+    </div>
+    <div class="mb-3">
+        <label for="metodo_pago" class="form-label">Metodo de Pago</label>
+        {{ form.metodo_pago }}
+    </div>
+    <div class="mb-3">
+        <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
+        {{ form.fecha_vencimiento }}
+    </div>
+    <div class="mb-3">
+        <label for="id_programacion_asociada" class="form-label">Programacion Asociada</label>
+        {{ form.id_programacion_asociada }}
+    </div>
+    <div class="mb-3">
+        <label for="impuestos_aplicados" class="form-label">Impuestos Aplicados</label>
+        {{ form.impuestos_aplicados }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

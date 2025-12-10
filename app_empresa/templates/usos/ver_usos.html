@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Usos de Materiales</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Servicio Programado</th>
+                <th>Material Usado</th>
+                <th>Cantidad</th>
+                <th>Fecha de Registro</th>
+                <th>Registrado por</th>
+                <th>Comentarios</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for uso in usos %}
+            <tr>
+                <td>{{ uso.id }}</td>
+                <td>{{ uso.id_programacion|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ uso.id_material|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ uso.cantidad_usada|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ uso.fecha_registro|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ uso.id_empleado_registro|default_if_none:"(Sin datos)" }}</td>
+                <td>{{ uso.comentarios_uso|default_if_none:"(Sin datos)" }}</td>
+                <td>
+                    <a href="{% url 'editar_uso' uso.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_uso' uso.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{% url 'agregar_uso' %}" class="btn btn-primary">Registrar Uso de Material</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Agregar Cliente</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
+        <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
+    </div>
+    <div class="mb-3">
+        <label for="contacto_principal" class="form-label">Contacto Principal</label>
+        <input type="text" class="form-control" id="contacto_principal" name="contacto_principal" required>
+    </div>
+    <div class="mb-3">
+        <label for="email_contacto" class="form-label">Email de Contacto</label>
+        <input type="email" class="form-control" id="email_contacto" name="email_contacto" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefono_contacto" class="form-label">Teléfono de Contacto</label>
+        <input type="text" class="form-control" id="telefono_contacto" name="telefono_contacto" required>
+    </div>
+    <div class="mb-3">
+        <label for="direccion_servicio" class="form-label">Dirección del Servicio</label>
+        <input type="text" class="form-control" id="direccion_servicio" name="direccion_servicio" required>
+    </div>
+    <div class="mb-3">
+        <label for="tipo_negocio" class="form-label">Tipo de Negocio</label>
+        <input type="text" class="form-control" id="tipo_negocio" name="tipo_negocio">
+    </div>
+    <div class="mb-3">
+        <label for="fecha_inicio_contrato" class="form-label">Fecha Inicio Contrato</label>
+        <input type="date" class="form-control" id="fecha_inicio_contrato" name="fecha_inicio_contrato">
+    </div>
+    <div class="mb-3">
+        <label for="estado_contrato" class="form-label">Estado del Contrato</label>
+        <input type="text" class="form-control" id="estado_contrato" name="estado_contrato">
+    </div>
+    <div class="mb-3">
+        <label for="frecuencia_servicio" class="form-label">Frecuencia del Servicio</label>
+        <input type="text" class="form-control" id="frecuencia_servicio" name="frecuencia_servicio">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

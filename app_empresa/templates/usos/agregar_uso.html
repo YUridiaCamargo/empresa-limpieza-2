@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Agregar Uso de Material</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_programacion" class="form-label">Programacion</label>
+        {{ form.id_programacion }}
+    </div>
+    <div class="mb-3">
+        <label for="id_material" class="form-label">Material</label>
+        {{ form.id_material }}
+    </div>
+    <div class="mb-3">
+        <label for="cantidad_usada" class="form-label">Cantidad Usada</label>
+        {{ form.cantidad_usada }}
+    </div>
+    <div class="mb-3">
+        <label for="id_empleado_registro" class="form-label">Empleado que Registra</label>
+        {{ form.id_empleado_registro }}
+    </div>
+    <div class="mb-3">
+        <label for="comentarios_uso" class="form-label">Comentarios</label>
+        {{ form.comentarios_uso }}
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

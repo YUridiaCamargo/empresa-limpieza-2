@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Servicios</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Costo Estándar</th>
+                <th>Duración Estimada (hrs)</th>
+                <th>Productos Usados</th>
+                <th>Requiere Equipo Especial</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servicio in servicios %}
+            <tr>
+                <td>{{ servicio.id }}</td>
+                <td>{{ servicio.nombre_servicio }}</td>
+                <td>{{ servicio.descripcion }}</td>
+                <td>{{ servicio.costo_estandar }}</td>
+                <td>{{ servicio.duracion_estimada_horas }}</td>
+                <td>{{ servicio.productos_usados }}</td>
+                <td>{{ servicio.requiere_equipo_especial|yesno:"Sí,No" }}</td>
+                <td>{{ servicio.categoria_servicio }}</td>
+                <td>
+                    <a href="{% url 'editar_servicio' servicio.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_servicio' servicio.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{% url 'agregar_servicio' %}" class="btn btn-primary">Agregar Servicio</a>
+{% endblock %}

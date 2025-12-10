@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Clientes</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Empresa</th>
+            <th>Contacto</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Tipo de Negocio</th>
+            <th>Inicio de Contrato</th>
+            <th>Estado de Contrato</th>
+            <th>Frecuencia de Servicio</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre_empresa }}</td>
+            <td>{{ cliente.contacto_principal }}</td>
+            <td>{{ cliente.email_contacto }}</td>
+            <td>{{ cliente.telefono_contacto }}</td>
+            <td>{{ cliente.direccion_servicio }}</td>
+            <td>{{ cliente.tipo_negocio }}</td>
+            <td>{{ cliente.fecha_inicio_contrato }}</td>
+            <td>{{ cliente.estado_contrato }}</td>
+            <td>{{ cliente.frecuencia_servicio }}</td>
+            <td>
+                <a href="{% url 'editar_cliente' cliente.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'borrar_cliente' cliente.id %}" class="btn btn-danger btn-sm">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

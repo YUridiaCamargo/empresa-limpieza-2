@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Ver Programación de Servicios</h2>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Servicio</th>
+                <th>Fecha Programada</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Estado</th>
+                <th>Observaciones</th>
+                <th>Empleado Asignado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for programacion in programaciones %}
+            <tr>
+                <td>{{ programacion.id }}</td>
+                <td>{{ programacion.id_cliente }}</td>
+                <td>{{ programacion.id_servicio }}</td>
+                <td>{{ programacion.fecha_programada }}</td>
+                <td>{{ programacion.hora_inicio }}</td>
+                <td>{{ programacion.hora_fin }}</td>
+                <td>{{ programacion.estado_servicio }}</td>
+                <td>{{ programacion.observaciones_cliente }}</td>
+                <td>{{ programacion.id_empleado_asignado }}</td>
+                <td>
+                    <a href="{% url 'editar_programacion' programacion.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_programacion' programacion.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{% url 'agregar_programacion' %}" class="btn btn-primary">Agregar Programación</a>
+{% endblock %}
